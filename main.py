@@ -23,11 +23,6 @@ def particionar_lista(lista, n):
 
 
 app = Flask(__name__)
-app
-app.config['MYSQL_USER'] = 'user'
-app.config['MYSQL_PASSWORD'] = 'password'
-app.config['MYSQL_DB'] = 'Contactos'
-mysql_db = MySQL(app)
 
 app.secret_key = 'mysecretkey'  # funciona para usar mensajes flash
 
