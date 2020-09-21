@@ -1,0 +1,24 @@
+{% extends 'layaout.html' %}
+
+{%block contenido%}
+<div class="card border-success mb-3" style="max-width: 20rem;">
+    <form action="/update/{{contact.id}}" method="POST">
+        <fieldset>
+            <div class="form-group">
+                <label for="fullname">Name:</label> <input type="text" class="form-control" name="fullname"
+                                                           value="{{contact.nombre}}">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label> <input type="text" class="form-control" name="phone"
+                                                         value="{{contact.telefono}}">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label> <input type="text" class="form-control" name="email"
+                                                         value="{{contact.email}}">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </fieldset>
+    </form>
+</div>
+{%endblock%}

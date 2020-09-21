@@ -1,0 +1,107 @@
+{% extends 'layaout.html' %}
+{% block contenido %}
+{%with messages = get_flashed_messages()%}
+{%if messages %}
+{% for message in messages:%}
+<!-- Muestra un mensaje de alerta-->
+<div style="max-width: 18rem;">
+    <div class="alert alert-dismissible alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Well done !</strong>{{message}}<a href="#" class="alert-link"> this important alert message</a>.
+    </div>
+</div>
+{%endfor%}
+{%endif%}
+{%endwith%}
+<!-- cierre -->
+
+<div class="row"> <!-- pone el contenido en una fila-->
+    <!-- Funcion para recuperar mensajes del metodo flash -->
+    <div class="col-md-5">    <!-- encierra el contenido en una columan de 5 espacios -->
+        <div class="card border-success mb-3" style="max-width: 20rem;">     <!-- encierra el contenido en una carta-->
+            <form action="/add" method="POST">    <!-- redirecciona a una ruta y obtiene datos -->
+                <fieldset>
+                    <div class="form-group">    <!-- diseño del formulario-->
+                        <label for="fullname">Name:</label> <input type="text" class="form-control" name="fullname"
+                                                                   value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone:</label> <input type="text" class="form-control" name="phone" value="">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label> <input type="text" class="form-control" name="email" value="">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-7" table-sm>
+        <div class="card border-success mb-3" style="max-width: 45rem;">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th>Operaciones</th>
+                    <th>Operaciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                {%for contact in contacts[0]%}     <!-- bucle que imprime los datos en la tabla -->
+                <tr class="table-danger">
+                    <th scope="row">{{contact.nombre}}</th>
+                    <td>{{contact.telefono}}</td>
+                    <td>{{contact.email}}</td>
+
+                    <td><a href="/edit/{{contact.id}}" class="btn btn-secondary">Edit</a></td>
+                    <td><a href="/delete/{{contact.id}}" class="btn btn-danger">Delete</a></td>
+
+                </tr>
+                {% endfor %}
+                {%for contact in contacts[1]%}
+                <tr>
+                    <th scope="row">{{contact.nombre}}</th>
+                    <td>{{contact.telefono}}</td>
+                    <td>{{contact.email}}</td>
+                    <td><a href="/edit/{{contact.id}}" class="btn btn-secondary">Edit</a></td>
+                    <td><a href="/delete/{{contact.id}}" class="btn btn-danger">Delete</a></td>
+                </tr>
+                {% endfor %}
+                {%for contact in contacts[2]%}
+                <tr class="table-success">
+                    <th scope="row">{{contact.nombre}}</th>
+                    <td>{{contact.telefono}}</td>
+                    <td>{{contact.email}}</td>
+                    <td><a href="/edit/{{contact.id}}" class="btn btn-secondary">Edit</a></td>
+                    <td><a href="/delete/{{contact.id}}" class="btn btn-danger">Delete</a></td>
+                </tr>
+                {% endfor %}
+                {%for contact in contacts[3]%}
+                <tr class="table-active">
+                    <th scope="row">{{contact.nombre}}</th>
+                    <td>{{contact.telefono}}</td>
+                    <td>{{contact.email}}</td>
+                    <td><a href="/edit/{{contact.id}}" class="btn btn-secondary">Edit</a></td>
+                    <td><a href="/delete/{{contact.id}}" class="btn btn-danger">Delete</a></td>
+                </tr>
+                {% endfor %}
+                {%for contact in contacts[4]%}
+                <tr class="table-warning">
+                    <th scope="row">{{contact.nombre}}</th>
+                    <td>{{contact.telefono}}</td>
+                    <td>{{contact.email}}</td>
+                    <td><a href="/edit/{{contact.id}}" class="btn btn-secondary">Edit</a></td>
+                    <td><a href="/delete/{{contact.id}}" class="btn btn-danger">Delete</a></td>
+
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
