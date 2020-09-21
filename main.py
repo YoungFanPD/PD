@@ -1,5 +1,4 @@
 from flask import Flask, redirect, url_for, render_template as rt, request, flash
-from flask_mysqldb import MySQL
 from peewee import *
 
 db = SqliteDatabase("Contact.db")
